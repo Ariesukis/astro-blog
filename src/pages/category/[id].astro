@@ -9,11 +9,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 const { id } = Astro.params;
 
-const res = await fetch(`http://adview.local/wp-json/wp/v2/posts?categories=${id}`);
+const res = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts?categories=${id}`);
 const posts = await res.json();
 
 export async function getStaticPaths() {
-	let res = await fetch(`http://adview.local/wp-json/wp/v2/posts`);
+	let res = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts`);
 	let posts = await res.json();
 
 	return posts.map((post) => (
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 
-const res2 = await fetch(`http://adview.local/wp-json/wp/v2/categories/${id}`);
+const res2 = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/categories/${id}`);
 const category = await res2.json();
 ---
 

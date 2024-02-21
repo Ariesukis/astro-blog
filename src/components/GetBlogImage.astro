@@ -5,7 +5,7 @@ export interface Props {
 
 const { image_id } = Astro.props;
 
-const posts = await fetch(`http://adview.local/wp-json/wp/v2/media/${image_id}`);
+const posts = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/media/${image_id}`);
 const post = await posts.json();
 
 ---

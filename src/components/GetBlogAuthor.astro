@@ -5,7 +5,7 @@ interface Props {
 
 const { author_id } = Astro.props;
 
-const res = await fetch(`http://adview.local/wp-json/wp/v2/users/${author_id}`);
+const res = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/users/${author_id}`);
 const author = await res.json();
 ---
 

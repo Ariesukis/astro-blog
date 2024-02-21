@@ -7,7 +7,7 @@ import GetBlogAuthor from '../../components/GetBlogAuthor.astro';
 import GetBlogDate from '../../components/GetBlogDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
-const res = await fetch("http://adview.local/wp-json/wp/v2/posts?_fields=featured_media,author,title,date,link,slug");
+const res = await fetch("https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts?_fields=featured_media,author,title,date,link,slug");
 const posts = await res.json();
 console.log(posts);
 ---

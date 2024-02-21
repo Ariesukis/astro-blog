@@ -3,11 +3,11 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 const { slug } = Astro.params;
 
-let res = await fetch(`http://adview.local/wp-json/wp/v2/posts?slug=${slug}`);
+let res = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts?slug=${slug}`);
 let [post] = await res.json();
 
 export async function getStaticPaths() {
-let res = await fetch("http://adview.local/wp-json/wp/v2/posts");
+let res = await fetch("https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts");
 let posts = await res.json();
 
   return posts.map((post) => ({
