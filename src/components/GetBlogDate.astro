@@ -1,0 +1,13 @@
+---
+export interface Props {
+    blog_date: string;
+}
+
+const { blog_date } = Astro.props;
+
+var date = blog_date.slice(0, 10);
+---
+
+<p class="date">
+    {date}
+</p>

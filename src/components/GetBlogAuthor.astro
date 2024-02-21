@@ -1,0 +1,14 @@
+---
+interface Props {
+	author_id: string;
+}
+
+const { author_id } = Astro.props;
+
+const res = await fetch(`http://adview.local/wp-json/wp/v2/users/${author_id}`);
+const author = await res.json();
+---
+
+<div class="author">
+    <h5>{author.name}</h5>
+</div>

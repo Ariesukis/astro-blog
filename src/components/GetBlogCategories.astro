@@ -1,0 +1,18 @@
+---
+interface Props {
+	category_id: number;
+}
+
+const { category_id } = Astro.props;
+
+
+const res = await fetch(`http://adview.local/wp-json/wp/v2/categories/${category_id}`);
+const category = await res.json();
+
+---
+
+<div class="author">
+    <a href={`/category/${category.id}/`}>
+        {category.name} ({category.count})
+    </a>
+</div>

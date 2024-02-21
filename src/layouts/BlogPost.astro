@@ -1,0 +1,99 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GetBlogImage from '../components/GetBlogImage.astro';
+import GetBlogAuthor from '../components/GetBlogAuthor.astro';
+import GetBlogCategories from '../components/GetBlogCategories.astro';
+
+export interface Props {
+	title: string;
+	description: string;
+	slug: string;
+	featured_media: string;
+	author_id: string;
+}
+
+const { title, description, slug, featured_media, author_id } = Astro.props;
+
+const res = await fetch ('http://adview.local/wp-json/wp/v2/categories');
+const categories = await res.json();
+---
+
+<html lang="es">
+	<head>
+		<BaseHead title={slug} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+				display: grid;
+				justify-content: center;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				padding-top: 1em;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.author {
+				padding-top: 1em;
+			}	
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					<GetBlogImage image_id={featured_media} />
+				</div>
+				<div class="prose">
+					<div class="title">
+						<h1>{title}</h1>
+						<hr />
+						<GetBlogAuthor author_id={author_id} />
+					</div>
+					<slot />
+				</div>
+			</article>
+
+			{
+				categories.map((category) => {
+					return (
+						<GetBlogCategories category_id={category.id} />
+					);
+				})
+			}
+		</main>
+
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,14 @@
+---
+export interface Props {
+    image_id: string;
+}
+
+const { image_id } = Astro.props;
+
+const posts = await fetch(`http://adview.local/wp-json/wp/v2/media/${image_id}`);
+const post = await posts.json();
+
+---
+
+
+<img src={post.guid.rendered} />
