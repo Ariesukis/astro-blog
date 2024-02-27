@@ -4,7 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-import Frame from '../components/ScrollBar';
+import Scrollbar from '../components/ScrollBar';
+import { HeroParallaxDemo } from '../components/ProductCard';
 ---
 
 <!doctype html>
@@ -13,10 +14,11 @@ import Frame from '../components/ScrollBar';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<Scrollbar client:load />
 		<Header />
-		<Frame client:load />
+		<HeroParallaxDemo client:load />
 		<!-- hero - start -->
-		<div class="bg-white p-6 sm:pb-8 lg:pb-12">
+		<div class="bg-black p-6 sm:pb-8 lg:pb-12">
 			<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 		
 			<section class="flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row">
