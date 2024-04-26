@@ -16,7 +16,7 @@ export interface Props {
 
 const { title, description, slug, featured_media, author_id } = Astro.props;
 
-const res = await fetch ('https://test.adview.mx/wordpresstesting/wp-json/wp/v2/categories');
+const res = await fetch ('https://colateralmkt.com/wp-json/wp/v2/categories');
 const categories = await res.json();
 ---
 
@@ -86,7 +86,7 @@ const categories = await res.json();
 			</article>
 
 			{
-				categories.map((category) => {
+				categories.map((category: any) => {
 					return (
 						<GetBlogCategories category_id={category.id} />
 					);

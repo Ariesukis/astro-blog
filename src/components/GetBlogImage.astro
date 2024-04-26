@@ -5,10 +5,10 @@ export interface Props {
 
 const { image_id } = Astro.props;
 
-const posts = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/media/${image_id}`);
+const posts = await fetch(`https://colateralmkt.com/wp-json/wp/v2/media/${image_id}`);
 const post = await posts.json();
 
 ---
 
 
-<img src={post.guid.rendered} />
+<img src={post.guid.rendered} class="h-full w-full object-cover object-center" />

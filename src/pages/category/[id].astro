@@ -9,14 +9,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 const { id } = Astro.params;
 
-const res = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts?categories=${id}`);
+const res = await fetch(`https://colateralmkt.com/wp-json/wp/v2/posts?categories=${id}`);
 const posts = await res.json();
 
 export async function getStaticPaths() {
-	let res = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/posts`);
+	let res = await fetch(`https://colateralmkt.com/wp-json/wp/v2/posts`);
 	let posts = await res.json();
 
-	return posts.map((post) => (
+	return posts.map((post:any) => (
 	{
 		params: { id: post.categories[0] },
 		props: { post: post },
@@ -24,8 +24,7 @@ export async function getStaticPaths() {
 	}));
 }
 
-
-const res2 = await fetch(`https://test.adview.mx/wordpresstesting/wp-json/wp/v2/categories/${id}`);
+const res2 = await fetch(`https://colateralmkt.com/wp-json/wp/v2/categories/${id}`);
 const category = await res2.json();
 ---
 
@@ -110,7 +109,7 @@ const category = await res2.json();
 			<section>
 				<ul>
 					{
-						posts.reverse().map((post) => (
+						posts.reverse().map((post: any) => (
 							<li>
 								<a href={`/blog/${post.slug}/`}>
 									<GetBlogImage image_id={post.featured_media} />

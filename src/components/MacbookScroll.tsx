@@ -2,7 +2,7 @@ import { MacbookScroll } from "./ui/macbook-scroll";
 
 export function MacbookScrollDemo() {
   return (
-    <div className="overflow-hidden bg-[#0B0B0F] w-full">
+    <div className="overflow-hidden bg-[#000000] w-full">
       <MacbookScroll
         src={`src/content/images/linear.webp`}
         showGradient={false}

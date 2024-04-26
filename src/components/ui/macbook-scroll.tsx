@@ -78,7 +78,7 @@ export const MacbookScroll = ({
       >
         {title || (
           <span>
-            Aries
+             
           </span>
         )}
       </motion.h2>
